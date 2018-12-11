@@ -48,6 +48,7 @@ var walkDOM = function (node) {
 
 body.id = document.title + new Date();
 body.timestamp = new Date();
+body.elements = [];
 
 walkDOM(document);
 
