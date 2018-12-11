@@ -54,5 +54,5 @@ var walkDOM = function (node) {
 };
 
 
-
-walkDOM(document.getElementByClassName('matssoft-workspace'));
+var targetDivs = document.getElementsByClassName('matssoft-workspace')
+walkDOM(targetDivs[0]);
