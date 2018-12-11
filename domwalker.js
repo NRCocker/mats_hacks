@@ -47,7 +47,7 @@ var walkDOM = function (node) {
 body.id = document.title + new Date();
 body.timestamp = new Date();
 
-walkDom(document);
+walkDOM(document);
 
 $.ajax({
   url: "http://localhost:9200/web_data",
