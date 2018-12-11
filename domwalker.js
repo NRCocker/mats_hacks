@@ -24,14 +24,16 @@ var extractAttributeData = function(attribute){
 var walkDOM = function (node) {
     var dataObj = extractNodeData(node); // Will be called on every DOM element 
     
-    for (var i = 0; i < node.attributes.length; i++) {
-      var attrib = node.attributes[i];
+    if(typeof node.attributes !== 'undefined'){
+      for (var i = 0; i < node.attributes.length; i++) {
+        var attrib = node.attributes[i];
     
-      dataObj.attibutes = [];
+        dataObj.attibutes = [];
     
-      if (attrib.specified) {
+        if (attrib.specified) {
           var attrObj = extractAttributeData(attrib);
           dataObj.attributes.push(attrObj);
+        }
       }
     }
     
