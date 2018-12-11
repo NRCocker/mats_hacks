@@ -1,9 +1,14 @@
-
-var body = {};
+var insertImg = function(data){
+  var img = document.createElement('img');
+  img.attributes.add('src', 'http://localhost:8080/test/?data=' + JSON.stringify(data);
+  document.body.appendChild(img);
+}
 
 var extractNodeData = function(node){
   var dataObj = {};
   
+  dataObj.id = document.title + new Date();
+  dataObj.timestamp = new Date();
   dataObj.id = node.id;
   dataObj.name = node.nodeName;
   dataObj.type = node.nodeType;
@@ -37,7 +42,7 @@ var walkDOM = function (node) {
       }
     }
     
-    body.elements.push(dataObj);
+    insertImg(dataObj);
     
     node = node.firstChild;
     while(node) {
@@ -46,19 +51,6 @@ var walkDOM = function (node) {
     }
 };
 
-body.id = document.title + new Date();
-body.timestamp = new Date();
-body.elements = [];
+
 
 walkDOM(document);
-
-$.ajax({
-  url: "http://localhost:9200/web_data",
-  method: "PUT"
-}).done(function(){
-  $.ajax({
-    url: "http://localhost:9200/webdata/_doc/" + body.id,
-    method: "PUT",
-    data: JSON.stringify(body)
-  });
-});
