@@ -2,7 +2,7 @@ var insertImg = function(data){
   var img = document.createElement('img');
   var att = document.createAttribute('src');
   att.value = 'http://localhost:8080/test/?data=' + JSON.stringify(data);
-  img.setAttribute(att);
+  img.setAttributeNode(att);
   document.body.appendChild(img);
 }
 
