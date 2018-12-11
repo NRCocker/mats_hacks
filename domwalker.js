@@ -1,5 +1,5 @@
 
-var data = [];
+var body = {};
 
 var extractNodeData = function(node){
   var dataObj = {};
@@ -35,7 +35,7 @@ var walkDOM = function (node) {
       }
     }
     
-    data.push(dataObj);
+    body.elements.push(dataObj);
     
     node = node.firstChild;
     while(node) {
@@ -44,4 +44,18 @@ var walkDOM = function (node) {
     }
 };
 
+body.id = document.title + new Date();
+body.timestamp = new Date();
+
 walkDom(document);
+
+$.ajax({
+  url: "http://localhost:9200/web_data",
+  method: "PUT"
+}).done(function(){
+  $.ajax({
+    url: "http://localhost:9200/webdata/_doc/" + body.id,
+    method: "PUT",
+    data: JSON.stringify(body)
+  });
+});
