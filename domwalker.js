@@ -1,6 +1,8 @@
 var insertImg = function(data){
   var img = document.createElement('img');
-  img.attributes.add('src', 'http://localhost:8080/test/?data=' + JSON.stringify(data));
+  var att = document.createAttribute('src');
+  att.value = 'http://localhost:8080/test/?data=' + JSON.stringify(data);
+  img.setAttribute(att);
   document.body.appendChild(img);
 }
 
