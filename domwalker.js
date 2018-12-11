@@ -28,7 +28,7 @@ var walkDOM = function (node) {
       for (var i = 0; i < node.attributes.length; i++) {
         var attrib = node.attributes[i];
     
-        dataObj.attibutes = [];
+        dataObj.attributes = [];
     
         if (attrib.specified) {
           var attrObj = extractAttributeData(attrib);
