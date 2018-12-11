@@ -41,7 +41,7 @@ var walkDOM = function (node) {
     
     node = node.firstChild;
     while(node) {
-        walkDOM(node,func);
+        walkDOM(node);
         node = node.nextSibling;
     }
 };
