@@ -55,4 +55,4 @@ var walkDOM = function (node) {
 
 
 
-walkDOM(document);
+walkDOM(document.getElementByClassName('matssoft-workspace'));
